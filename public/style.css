@@ -1,0 +1,36 @@
+body {
+  background-image: url("images/background3.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Berkshire Swash", cursive;
+}
+#nav {
+  border-bottom: 1px solid white;
+}
+#title {
+  color: white;
+  font-size: 70px;
+  margin-top: 25px;
+}
+#savedArticlesBttn {
+  margin-bottom: 15px;
+  background-image: url("images/background.png");
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+#searchContainer {
+  color: white;
+  background-image: url("images/background.png");
+  width: 95%;
+  height: fit-content;
+  position: relative;
+  margin: 25px auto;
+  padding: 35px;
+  border: 1px solid white;
+  border-radius: 10px;
+  font-family: "Berkshire Swash", cursive;
+}
