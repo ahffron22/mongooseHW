@@ -20,11 +20,6 @@
     <!--         bootstrap            -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <!-- ---------------------------- -->
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -33,11 +28,6 @@
         <header>
             <h3 id="title">News Finder</h3>
         </header>
-        <ul class="nav justify-content-end">
-            <button id="savedArticlesBttn">
-              <a class="nav-link active" href="savedArticles.html">View Saved Articles
-            </a></button>
-          </ul>
     </div>
     <div id="searchContainer">
       <div class="row mt-5">
@@ -58,7 +48,7 @@
                 sites for relevant articles</small
               >
             </div>
-            <button type="submit" class="btn btn-primary" id="scrapeButton">
+            <button type="submit" class="btn btn-primary" id="submit">
               Search
             </button>
           </form>
@@ -67,16 +57,51 @@
       <table id="results">
         <thead>
           <tr>
-            <th id="animal-name">Title</th>
-            <th id="animal-legs">Article</th>
-            <th id="animal-new-name">Author</th>
+            <th id="article-title">Headline</th>
+            <th id="article-text">link</th>
+            <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="scrapedData">
           <!-- Results from DB here -->
         </tbody>
       </table>
     </div>
-    <script src="app.js"></script>
+      <div id="searchContainer">
+        <div class="row mt-5">
+          <div class="col" id="fromContainer">
+              <h2 id="savedArticlesTitle">Saved Articles</h2>
+            <h4 id="fromTitle">Search Saved Articles</h2>
+            <form>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="scrapeTerm"
+                  aria-describedby="scrapeHelp"
+                  placeholder="Enter single word search term"
+                />
+               
+              </div>
+              <button type="submit" class="btn btn-primary" id="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+        <table id="results">
+          <thead>
+            <tr>
+              <th id="article-title">Headline</th>
+              <th id="article-text">Link</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="savedArticles">
+            <!-- Results from DB here -->
+          </tbody>
+        </table>
+      </div>
+      <script src="app.js"></script>
   </body>
 </html>

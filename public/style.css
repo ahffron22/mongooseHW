@@ -13,15 +13,7 @@ body {
   font-size: 70px;
   margin-top: 25px;
 }
-#savedArticlesBttn {
-  margin-bottom: 15px;
-  background-image: url("images/background.png");
-  color: white;
-  padding: 15px;
-  font-size: 18px;
-  border: 1px solid white;
-  border-radius: 10px;
-}
+
 #searchContainer {
   color: white;
   background-image: url("images/background.png");
@@ -29,8 +21,23 @@ body {
   height: fit-content;
   position: relative;
   margin: 25px auto;
-  padding: 35px;
+  padding: 25px;
   border: 1px solid white;
   border-radius: 10px;
   font-family: "Berkshire Swash", cursive;
+}
+
+#saveBttn,
+#remove {
+  background-color: slategray;
+  margin-top: 10px;
+}
+
+#tableEntry {
+  border-bottom: 1px solid white;
+}
+#savedArticlesTitle {
+  font-size: 40px;
+  margin-bottom: 35px;
+  border-bottom: 1px solid white;
 }

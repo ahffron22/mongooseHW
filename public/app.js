@@ -1,41 +1,29 @@
+var $scrapeTerm = $("#scrapeTerm");
 function displayResults(scrapedArticles) {
+  // First, empty the table
   $("tbody").empty();
 
+  // Then, for each entry of that json...
   scrapedArticles.forEach(function (article) {
-    var tr = $("<tr>").append(
-      $("<td>").text(article.title),
-      $("<td>").text(article.link)
+    // Append each of the animal's properties to the table
+    var tr = $("<tr id='tableEntry'>").append(
+      $("<td id='savedTitle'>").text(article.title),
+      $("<td id='savedLink'>").text(article.link),
+      $("<button id= 'saveBttn'>save</button>")
     );
 
-    $("tbody").append(tr);
+    $("#scrapedData").append(tr);
   });
 }
 
-function setActive(selector) {
-  $("th").removeClass("active");
-  $(selector).addClass("active");
-}
+$.getJSON("/all", function (data) {
+  // Call our function to generate a table body
+  displayResults(data);
+});
 
-// 1: On Load
-// ==========
-
-// $.getJSON("/all", function (data) {
-//   displayResults(data);
-// });
-
-// 2: Button Interactions
-// ======================
-
-// $("#savedArticlesBttn").on("click", function () {
-//   $.getJSON("/savedArticles", function (data) {
-//     displayResults(data);
-//   });
-// });
-
-// $("#name-sort").on("click", function () {
-//   setActive("#animal-name");
-
-//   $.getJSON("/name", function (data) {
-//     displayResults(data);
-//   });
-// });
+var savedTitle = "";
+$(document).on("click", "#saveBttn", function () {
+  savedTitle = $(this).parents("tr").text();
+  var html = `<tr><td>${savedTitle}</td><td><button id="remove">-</button></td></tr>`;
+  $("#savedArticles").append(html);
+});
