@@ -4,7 +4,11 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 var mongoose = require("mongoose");
 var app = express();
+var logger = require("morgan");
 
+app.use(logger("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static("public"));
 
 var databaseUrl = "articleScraper";
@@ -49,23 +53,9 @@ axios.get("https://old.reddit.com/r/webdev").then(function (response) {
     }
   });
 });
-
 app.get("/all", function (req, res) {
   // Query: In our database, go to the animals collection, then "find" everything
   db.scrapedArticles.find().limit(10, function (error, found) {
-    // Log any errors if the server encounters one
-    if (error) {
-      console.log(error);
-    }
-    // Otherwise, send the result of this query to the browser
-    else {
-      res.json(found);
-    }
-  });
-});
-
-app.get("/scrape", function (req, res) {
-  db.scrapedArticles.find({}, function (error, found) {
     // Log any errors if the server encounters one
     if (error) {
       console.log(error);

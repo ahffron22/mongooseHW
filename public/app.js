@@ -1,4 +1,6 @@
 var $scrapeTerm = $("#scrapeTerm");
+var savedTitle = "";
+var savedLink = "";
 function displayResults(scrapedArticles) {
   // First, empty the table
   $("tbody").empty();
@@ -16,14 +18,13 @@ function displayResults(scrapedArticles) {
   });
 }
 
+$(document).on("click", "#saveBttn", function () {
+  savedTitle = $(this).parent("tr").text();
+  var html = `<tr><td>${savedTitle}</td> <td><button id="remove">-</button></td></tr>`;
+  $("#savedArticles").append(html);
+});
+
 $.getJSON("/all", function (data) {
   // Call our function to generate a table body
   displayResults(data);
-});
-
-var savedTitle = "";
-$(document).on("click", "#saveBttn", function () {
-  savedTitle = $(this).parents("tr").text();
-  var html = `<tr><td>${savedTitle}</td><td><button id="remove">-</button></td></tr>`;
-  $("#savedArticles").append(html);
 });
